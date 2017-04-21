@@ -2,8 +2,12 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import date
 from django.core.urlresolvers import reverse
+
+
+
+
+
 
 class Film(models.Model):
     TYPES= (('Comedy', 'Comedy'), ('Action', 'Action'), ('Drama', 'Drama'), ('Terror', 'Terror'),
@@ -44,7 +48,7 @@ class Review(models.Model):
 
 class FavouriteList(models.Model):
     name=models.TextField(max_length=30,default='FavouriteList')
-    creation_date=models.DateField('Creation Date',default=date.today())
+    creation_date=models.DateField('Creation Date',auto_now_add=True)
     user=models.ForeignKey(User,related_name='mylists')
     films=models.ManyToManyField(Film)
     def __unicode__(self):
