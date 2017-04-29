@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/CRM/.idea/CRM.iml" filepath="$USER_HOME$/CRM/.idea/CRM.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/VendaDePelis.iml" filepath="$PROJECT_DIR$/.idea/VendaDePelis.iml" />
       <module fileurl="file://$USER_HOME$/myrecommendations/.idea/myrecommendations.iml" filepath="$USER_HOME$/myrecommendations/.idea/myrecommendations.iml" />
     </modules>
