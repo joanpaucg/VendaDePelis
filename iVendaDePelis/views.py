@@ -16,7 +16,7 @@ class FilmDetail(DetailView):
 class ReviewCreate(CreateView):
     model = Review
     template_name = "iVendaDePelis/templates/VendaDePelis/review_form.html"
-    form_class = ReviewForm
+    #form_class = ReviewForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -29,7 +29,7 @@ class FavouriteListView(DetailView):
 class FavouriteListCreate(CreateView):
     model = FavouriteList
     template_name = "iVendaDePelis/templates/VendaDePelis/favourite_list_create.html"
-    form_class = FavouriteListForm
+    #form_class = FavouriteListForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user

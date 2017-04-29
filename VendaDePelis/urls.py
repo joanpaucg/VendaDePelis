@@ -21,5 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/login/$',  login,  name='login'),
     url(r'^accounts/logout/$',  logout,  name='logout'),
-    url(r'^myrestaurants/', include('iVendaDePelis.urls', namespace='myrestaurants')),
+    url(r'^ivendadepelis/', include('iVendaDePelis.urls', namespace='ivendadepelis')),
 ]

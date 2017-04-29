@@ -1,0 +1,30 @@
+{% extends "VendaDePelis/base.html" %}
+
+{% block content %}
+
+<h1>
+    {{ film.title }}
+</h1>
+<p><b>Price:</b>  {{ film.price }} Euros</p>
+<p><b>Year:</b>  {{ film.year }}</p>
+<p><b>Duration:</b>  {{ film.duration }}</p>
+<p><b>Genre:</b>  {{ film.genre }}</p>
+<p><b>Description:</b> {{ film.plot}}</p>
+<h2>Actors </h2>
+<ul>{% for actor in film.actors.all %}
+    <li>{{actor.name}}</li>
+  {% endfor %}
+</ul>
+<h2>Reviews</h2>
+<ul>
+    {% for review in film.reviews.all %}
+        <li>
+            <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
+            <p>{% if review.opinion %}{{ review.opinion }}{% endif %}</p>
+            <p>Created by {{ review.user }} </p>
+        </li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

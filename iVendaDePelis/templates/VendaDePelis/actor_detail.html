@@ -1,0 +1,19 @@
+{% extends "VendaDePelis/base.html" %}
+
+{% block content %}
+
+<h1>
+    {{ actor.name }}
+</h1>
+<p>Birthday:{{ actor.birthday }}</p>
+<p>Country:{{ actor.country }}</p>
+<p>Biography:{{actor.biography }}</p>
+<p>Genre:{{ film.genre }}</p>
+<p>Films where he/she has acted</p>
+<ul>{% for film in actors.films.all %}
+  <li>{{film.title}}}
+  {% endfor %}
+</ul>
+
+
+{% endblock %}
