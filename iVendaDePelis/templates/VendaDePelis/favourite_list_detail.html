@@ -1,0 +1,22 @@
+{% extends "VendaDePelis/base.html" %}
+
+{% block content %}
+
+<h1>
+    {{ favouritelist.name }}
+    {% if user == favouritelist.user %}
+        (<a href="{% url 'ivendadepelis:favouritelist_create' favouritelist.id %}">add</a>)
+    {% endif %}
+</h1>
+<p><b>Creation Date:</b>  {{ favouritelist.creation_date }}</p>
+<p><b>Created By User: </b>  {{ favouritelist.user }}</p>
+<p><b>Films:</b></p>
+<ul>{% for film in favouritelist.films.all %}
+    <li><a href="{% url 'ivendadepelis:film_detail' film.id %}">
+            {{ film.title }}</a></li>
+  {% endfor %}
+</ul>
+
+
+
+{% endblock %}
