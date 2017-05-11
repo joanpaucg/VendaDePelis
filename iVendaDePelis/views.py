@@ -1,14 +1,30 @@
 from django.shortcuts import render_to_response
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
+from django.views.generic.edit import DeleteView
 from models import Film, FavouriteList,Actor
 from models import Review
 from iVendaDePelis.forms import UserForm
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
-
-
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 # Create your views here.
+class LoginRequiredMixin(object):
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+class CheckIsOwnerMixin(object):
+    def get_object(self, *args, **kwargs):
+        obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+        if not obj.user == self.request.user:
+            raise PermissionDenied
+        return obj
+class LoginRequiredCheckIsOwnerDeleteView(LoginRequiredMixin, CheckIsOwnerMixin, DeleteView):
+    template_name = 'VendaDePelis/delete_object.html'
+    success_url = "/ivendadepelis/films"
 class FilmDetail(DetailView):
     model = Film
     template_name = "VendaDePelis/film_detail.html"
@@ -29,11 +45,11 @@ class ReviewCreate(CreateView):
 
 class FavouriteListView(DetailView):
     model = FavouriteList
-    template_name = "iVendaDePelis/templates/VendaDePelis/favourite_list_detail.html"
+    template_name = "VendaDePelis/favourite_list_detail.html"
 
 class FavouriteListCreate(CreateView):
     model = FavouriteList
-    template_name = "iVendaDePelis/templates/VendaDePelis/favourite_list_create.html"
+    template_name = "VendaDePelis/form.html"
     #form_class = FavouriteListForm
 
     def form_valid(self, form):

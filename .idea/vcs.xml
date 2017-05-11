@@ -3,5 +3,9 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$USER_HOME$/CRM" vcs="Git" />
+    <mapping directory="$USER_HOME$/cinema" vcs="Git" />
+    <mapping directory="$USER_HOME$/cinema" vcs="Git" />
+    <mapping directory="$USER_HOME$/myrecommendations" vcs="Git" />
+    <mapping directory="$USER_HOME$/myrecommendations-bdd" vcs="Git" />
   </component>
 </project>

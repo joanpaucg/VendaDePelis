@@ -6,5 +6,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="myrecommendations" />
     <orderEntry type="module" module-name="CRM" />
+    <orderEntry type="module" module-name="myrecommendations" />
+    <orderEntry type="module" module-name="cinema" />
+    <orderEntry type="module" module-name="myrecommendations-bdd" />
+    <orderEntry type="module" module-name="cinema" />
   </component>
 </module>

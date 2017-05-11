@@ -10,8 +10,9 @@
 <p>Biography:{{actor.biography }}</p>
 <p>Genre:{{ film.genre }}</p>
 <p>Films where he/she has acted</p>
-<ul>{% for film in actors.films.all %}
-  <li>{{film.title}}}
+<ul>{% for film in actor.films.all %}
+  <a href="{% url 'ivendadepelis:film_detail' film.id %}">
+            {{ film.title }}</a></li>
   {% endfor %}
 </ul>
 
