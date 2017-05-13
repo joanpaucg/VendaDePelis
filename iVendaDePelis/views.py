@@ -10,6 +10,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
+from serializers import *
+from rest_framework import generics,permissions
 # Create your views here.
 class LoginRequiredMixin(object):
     @method_decorator(login_required())
@@ -132,3 +134,25 @@ def review(request, pk):
         film=film)
     review.save()
     return HttpResponseRedirect(reverse('ivendadepelis:film_detail', args=(film.id,)))
+
+### RESTful API views ###
+class IsOwnerOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        # Instance must have an attribute named `owner`.
+        return obj.user == request.user
+class APIFilmDetail(generics.ListCreateAPIView):
+    model= Film
+    queryset = Film.objects.all()
+    serializer_class=FilmSerializer
+class APIFilmReviewDetail(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Review
+    queryset = Review.objects.all()
+    serializer_class = FilmReviewSerializer
+
+

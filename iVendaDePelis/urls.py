@@ -1,9 +1,10 @@
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 from models import Film, FavouriteList, Actor,Review
-from views import LoginRequiredCheckIsOwnerUpdateView,review,FilmDetail,ActorDetail,register,ReviewCreate, FavouriteListView, FavouriteListCreate,LoginRequiredCheckIsOwnerDeleteView
+from views import *
 from forms import ReviewEditForm,FavouriteListForm
+
 urlpatterns = [
     url(r'^accounts/register/$', register, name='register'),
     url(r'^films/$',
@@ -53,4 +54,11 @@ urlpatterns = [
        LoginRequiredCheckIsOwnerUpdateView.as_view(model=FavouriteList,form_class=FavouriteListForm),
        name='favouritelist_edit'),
 
+]
+
+### RESTful API url ###
+urlpatterns+=[
+    url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/films/(?P<pk>\d+)/$',APIFilmDetail.as_view(),name='film-detail'),
+    url(r'^api/filmreviews/(?P<pk>\d+)/$', APIFilmReviewDetail.as_view(),name='filmreview-detail'),
 ]
