@@ -8,7 +8,6 @@
       <change type="NEW" beforePath="" afterPath="$USER_HOME$/CRM/CRM/features/steps/step_create_opinion.py" />
       <change type="DELETED" beforePath="$USER_HOME$/CRM/.idea/webResources.xml" afterPath="" />
       <change type="MOVED" beforePath="$USER_HOME$/CRM/features/environment.py" afterPath="$USER_HOME$/CRM/CRM/features/environment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/myrecommendations/db.sqlite3" afterPath="$USER_HOME$/myrecommendations/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CRM/.idea/CRM.iml" afterPath="$USER_HOME$/CRM/.idea/CRM.iml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CRM/.idea/modules.xml" afterPath="$USER_HOME$/CRM/.idea/modules.xml" />
@@ -19,9 +18,6 @@
       <change type="MODIFICATION" beforePath="$USER_HOME$/CRM/.idea/runConfigurations/Python___Install.xml" afterPath="$USER_HOME$/CRM/.idea/runConfigurations/Python___Install.xml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CRM/.idea/runConfigurations/Python___Test.xml" afterPath="$USER_HOME$/CRM/.idea/runConfigurations/Python___Test.xml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/CRM/.idea/vcs.xml" afterPath="$USER_HOME$/CRM/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iVendaDePelis/serializers.py" afterPath="$PROJECT_DIR$/iVendaDePelis/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iVendaDePelis/urls.py" afterPath="$PROJECT_DIR$/iVendaDePelis/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/iVendaDePelis/views.py" afterPath="$PROJECT_DIR$/iVendaDePelis/views.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/cinema/.idea/cinema.iml" afterPath="$USER_HOME$/cinema/.idea/cinema.iml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/myrecommendations-bdd/features/register_dish.feature" afterPath="$USER_HOME$/myrecommendations-bdd/features/register_dish.feature" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/myrecommendations/myrestaurants/templates/myrestaurants/dish_detail.html" afterPath="$USER_HOME$/myrecommendations/myrestaurants/templates/myrestaurants/dish_detail.html" />
@@ -42,7 +38,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iVendaDePelis/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
@@ -66,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/iVendaDePelis/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
+            <state relative-caret-position="462">
               <caret line="181" column="46" lean-forward="true" selection-start-line="181" selection-start-column="46" selection-end-line="181" selection-end-column="46" />
               <folding>
                 <element signature="e#0#74#0" expanded="true" />
@@ -563,7 +559,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1537" height="912" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25990596" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -573,7 +568,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3303342" sideWeight="0.49764943" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3303342" sideWeight="0.49764943" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -960,16 +955,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iVendaDePelis/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="181" column="46" lean-forward="true" selection-start-line="181" selection-start-column="46" selection-end-line="181" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/iVendaDePelis/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -984,6 +969,16 @@
           <caret line="67" column="70" lean-forward="false" selection-start-line="67" selection-start-column="70" selection-end-line="67" selection-end-column="70" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iVendaDePelis/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="181" column="46" lean-forward="true" selection-start-line="181" selection-start-column="46" selection-end-line="181" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
