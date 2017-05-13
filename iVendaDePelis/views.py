@@ -1,15 +1,15 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import reverse, render_to_response,get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
-from django.views.generic.edit import DeleteView
-from models import Film, FavouriteList,Actor
-from models import Review
+from django.views.generic.edit import DeleteView,UpdateView
+from models import Film, FavouriteList,Actor,Review
 from iVendaDePelis.forms import UserForm
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
 # Create your views here.
 class LoginRequiredMixin(object):
     @method_decorator(login_required())
@@ -25,6 +25,8 @@ class CheckIsOwnerMixin(object):
 class LoginRequiredCheckIsOwnerDeleteView(LoginRequiredMixin, CheckIsOwnerMixin, DeleteView):
     template_name = 'VendaDePelis/delete_object.html'
     success_url = "/ivendadepelis/films"
+class LoginRequiredCheckIsOwnerUpdateView(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+    template_name = 'VendaDePelis/form.html'
 class FilmDetail(DetailView):
     model = Film
     template_name = "VendaDePelis/film_detail.html"
@@ -58,6 +60,7 @@ class FavouriteListCreate(CreateView):
 class ActorDetail(DetailView):
     model = Actor
     template_name = "VendaDePelis/actor_detail.html"
+
 @csrf_exempt
 def register(request):
     context = RequestContext(request)
@@ -108,3 +111,24 @@ def register(request):
         'registration/register.html',
         {'user_form': user_form,'registered': registered},
         context)
+@login_required()
+def review(request, pk):
+    value=None
+    film = get_object_or_404(Film, pk=pk)
+    if  request.POST['rating']=="one":
+        value=1
+    elif request.POST['rating']=="two":
+        value=2
+    elif request.POST['rating'] == "three":
+        value=3
+    elif request.POST['rating'] == "four":
+        value=4
+    elif request.POST['rating'] == "five":
+        value=5
+    review = Review(
+        rating=value,
+        opinion=request.POST['opinion'],
+        user=request.user,
+        film=film)
+    review.save()
+    return HttpResponseRedirect(reverse('ivendadepelis:film_detail', args=(film.id,)))

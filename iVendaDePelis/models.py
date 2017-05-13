@@ -25,6 +25,10 @@ class Film(models.Model):
         return u"%s"%self.title
     def get_absolute_url(self):
         return reverse('iVendaDePelis:film_detail',kwargs={'pk':self.pk})
+    def averageRating(self):
+        ratingSum=sum([float(review.rating) for review in self.reviews.all()])
+        reviewCount=self.reviews.all().count()
+        return ratingSum/reviewCount
 
 class Actor(models.Model):
     name = models.TextField(max_length=30)
@@ -35,7 +39,7 @@ class Actor(models.Model):
     def __unicode__(self):
         return u"%s" % self.name
     def get_absolute_url(self):
-        return reverse('iVendaDePelis:actor_detail',kwargs={'pk':self.pk})
+        return reverse('ivendadepelis:actor_detail',kwargs={'pk':self.pk})
 
 class Review(models.Model):
     RATING_CHOICES = ((1, 'one'), (2, 'two'), (3, 'three'), (4, 'four'),\
@@ -44,6 +48,9 @@ class Review(models.Model):
     opinion = models.TextField(blank=True,null=True)
     user=models.ForeignKey(User)
     film=models.ForeignKey(Film,related_name='reviews')
+
+    def get_absolute_url(self):
+        return '/ivendadepelis/films/'+ str(self.film.id)+'/'
 
 
 class FavouriteList(models.Model):
