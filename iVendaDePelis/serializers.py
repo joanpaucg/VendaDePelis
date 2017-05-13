@@ -23,5 +23,11 @@ class ActorSerializer(HyperlinkedModelSerializer):
     class Meta:
         model= Actor
         fields=('uri','films','name','country','birthday','country','biography')
-
+class FavouriteListSerializer(HyperlinkedModelSerializer):
+    uri=HyperlinkedIdentityField(view_name='ivendadepelis:favouritelist-detail')
+    films=HyperlinkedRelatedField(many=True,read_only=True,view_name='ivendadepelis:film-detail')
+    user=CharField(read_only=True)
+    class Meta:
+        model=FavouriteList
+        fields=('uri','films','user','name','creation_date')
 

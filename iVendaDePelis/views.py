@@ -2,7 +2,7 @@ from django.shortcuts import reverse, render_to_response,get_object_or_404
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView,UpdateView
-from models import Film, FavouriteList,Actor,Review
+from models import *
 from iVendaDePelis.forms import UserForm,FavouriteListForm
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
@@ -170,5 +170,15 @@ class APIActorList(generics.ListCreateAPIView):
     model=Actor
     queryset = Actor.objects.all()
     serializer_class = ActorSerializer
+class APIFavouriteListList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model=FavouriteList
+    queryset = FavouriteList.objects.all()
+    serializer_class = FavouriteListSerializer
+class APIFavouriteListDetail(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model=FavouriteList
+    queryset = FavouriteList.objects.all()
+    serializer_class = FavouriteListSerializer
 
 

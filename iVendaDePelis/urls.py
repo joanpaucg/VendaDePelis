@@ -61,9 +61,10 @@ urlpatterns+=[
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/films/$',APIFilmList.as_view(),name='film-list'),
     url(r'^api/films/(?P<pk>\d+)/$',APIFilmDetail.as_view(),name='film-detail'),
-    url(r'^api/actors/$',APIActorList.as_view(),name='actor-detail'),
+    url(r'^api/actors/$',APIActorList.as_view(),name='actor-list'),
     url(r'^api/actors/(?P<pk>\d+)/$',APIActorDetail.as_view(),name='actor-detail'),
     url(r'^api/filmreviews/(?P<pk>\d+)/$', APIFilmReviewDetail.as_view(),name='filmreview-detail'),
-
+    url(r'^api/favouritelists/$', APIFavouriteListList.as_view(), name='favouritelist-list'),
+    url(r'^api/favouritelists/(?P<pk>\d+)/$', APIFavouriteListDetail.as_view(), name='favouritelist-detail'),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api', 'json', 'xml'])
