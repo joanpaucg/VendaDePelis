@@ -1,0 +1,18 @@
+{% extends "VendaDePelis/base.html" %}
+{% block content %}
+<h1>
+    FavouriteLists
+</h1>
+<a href="{% url 'ivendadepelis:favouritelist_create'%}">Create</a>
+<ul>
+    {% for favouritelist in latest_favourite_lists %}
+        {% if user == favouritelist.user%}
+        <a href="{% url 'ivendadepelis:favouritelist_edit'  favouritelist.id %}">Edit</a>
+        <a href="{% url 'ivendadepelis:favouritelist_delete'  favouritelist.id %}">Delete</a>
+        {% endif %}
+        <li><a href="{% url 'ivendadepelis:favouritelist_detail' favouritelist.id %}">
+            {{ favouritelist.name }}</a></li>
+    {% empty %}<li>Don't worry be happy , no films registered yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

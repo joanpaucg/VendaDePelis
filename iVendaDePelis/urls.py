@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 from models import Film, FavouriteList, Actor,Review
 from views import LoginRequiredCheckIsOwnerUpdateView,review,FilmDetail,ActorDetail,register,ReviewCreate, FavouriteListView, FavouriteListCreate,LoginRequiredCheckIsOwnerDeleteView
-from forms import ReviewEditForm
+from forms import ReviewEditForm,FavouriteListForm
 urlpatterns = [
     url(r'^accounts/register/$', register, name='register'),
     url(r'^films/$',
@@ -30,9 +30,15 @@ urlpatterns = [
     url(r'^actors/(?P<pk>\d+)/$',
             ActorDetail.as_view(),
             name='actor_detail'),
+    url(r'^favouritelists/$',
+        ListView.as_view(
+            queryset=FavouriteList.objects.all(),
+            context_object_name='latest_favourite_lists',
+            template_name='VendaDePelis/favouritelist_list.html'),
+            name='favouritelist'),
     url(r'^favouritelists/(?P<pk>\d+)/$',
             FavouriteListView.as_view(),
-            name="favourite_list_detail"
+            name="favouritelist_detail"
         ),
     url(r'^favouritelists/create/$',
             FavouriteListCreate.as_view(),
@@ -43,5 +49,8 @@ urlpatterns = [
     url(r'^favouritelists/(?P<pk>\d+)/delete/$',
        LoginRequiredCheckIsOwnerDeleteView.as_view(model=FavouriteList),
        name='favouritelist_delete'),
+    url(r'^favouritelists/(?P<pk>\d+)/edit/$',
+       LoginRequiredCheckIsOwnerUpdateView.as_view(model=FavouriteList,form_class=FavouriteListForm),
+       name='favouritelist_edit'),
 
 ]

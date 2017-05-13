@@ -4,9 +4,7 @@
 
 <h1>
     {{ favouritelist.name }}
-    {% if user == favouritelist.user %}
-        (<a href="{% url 'ivendadepelis:favouritelist_create' favouritelist.id %}">add</a>)
-    {% endif %}
+
 </h1>
 <p><b>Creation Date:</b>  {{ favouritelist.creation_date }}</p>
 <p><b>Created By User: </b>  {{ favouritelist.user }}</p>

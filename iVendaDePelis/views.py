@@ -3,7 +3,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView,UpdateView
 from models import Film, FavouriteList,Actor,Review
-from iVendaDePelis.forms import UserForm
+from iVendaDePelis.forms import UserForm,FavouriteListForm
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -52,7 +52,7 @@ class FavouriteListView(DetailView):
 class FavouriteListCreate(CreateView):
     model = FavouriteList
     template_name = "VendaDePelis/form.html"
-    #form_class = FavouriteListForm
+    form_class = FavouriteListForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
