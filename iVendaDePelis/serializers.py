@@ -17,4 +17,11 @@ class FilmReviewSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Review
         fields = ('uri', 'rating', 'opinion', 'user','film')
+class ActorSerializer(HyperlinkedModelSerializer):
+    uri=HyperlinkedIdentityField(view_name='ivendadepelis:actor-detail')
+    films=HyperlinkedRelatedField(many=True,read_only=True,view_name='ivendadepelis:film-detail')
+    class Meta:
+        model= Actor
+        fields=('uri','films','name','country','birthday','country','biography')
+
 

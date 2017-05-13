@@ -145,7 +145,13 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
         # Instance must have an attribute named `owner`.
         return obj.user == request.user
+class APIFilmList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Film
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
 class APIFilmDetail(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
     model= Film
     queryset = Film.objects.all()
     serializer_class=FilmSerializer
@@ -154,5 +160,15 @@ class APIFilmReviewDetail(generics.ListCreateAPIView):
     model = Review
     queryset = Review.objects.all()
     serializer_class = FilmReviewSerializer
+class APIActorDetail(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model=Actor
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
+class APIActorList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model=Actor
+    queryset = Actor.objects.all()
+    serializer_class = ActorSerializer
 
 

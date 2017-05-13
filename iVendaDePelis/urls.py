@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView, UpdateView
 from models import Film, FavouriteList, Actor,Review
 from views import *
 from forms import ReviewEditForm,FavouriteListForm
-
+from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     url(r'^accounts/register/$', register, name='register'),
     url(r'^films/$',
@@ -59,6 +59,11 @@ urlpatterns = [
 ### RESTful API url ###
 urlpatterns+=[
     url(r'^api/auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/films/$',APIFilmList.as_view(),name='film-list'),
     url(r'^api/films/(?P<pk>\d+)/$',APIFilmDetail.as_view(),name='film-detail'),
+    url(r'^api/actors/$',APIActorList.as_view(),name='actor-detail'),
+    url(r'^api/actors/(?P<pk>\d+)/$',APIActorDetail.as_view(),name='actor-detail'),
     url(r'^api/filmreviews/(?P<pk>\d+)/$', APIFilmReviewDetail.as_view(),name='filmreview-detail'),
+
 ]
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api', 'json', 'xml'])
