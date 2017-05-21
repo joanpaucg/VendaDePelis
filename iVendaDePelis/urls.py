@@ -63,6 +63,7 @@ urlpatterns+=[
     url(r'^api/films/(?P<pk>\d+)/$',APIFilmDetail.as_view(),name='film-detail'),
     url(r'^api/actors/$',APIActorList.as_view(),name='actor-list'),
     url(r'^api/actors/(?P<pk>\d+)/$',APIActorDetail.as_view(),name='actor-detail'),
+    url(r'^api/filmreviews/$', APIFilmReviewList.as_view(),name='filmreview-list'),
     url(r'^api/filmreviews/(?P<pk>\d+)/$', APIFilmReviewDetail.as_view(),name='filmreview-detail'),
     url(r'^api/favouritelists/$', APIFavouriteListList.as_view(), name='favouritelist-list'),
     url(r'^api/favouritelists/(?P<pk>\d+)/$', APIFavouriteListDetail.as_view(), name='favouritelist-detail'),

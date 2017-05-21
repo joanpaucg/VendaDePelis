@@ -38,7 +38,7 @@ class FilmDetail(DetailView):
         context['RATING_CHOICES'] = Review.RATING_CHOICES
         return context
 
-class ReviewCreate(CreateView):
+class ReviewCreate(LoginRequiredMixin,CreateView):
     model = Review
     template_name = "iVendaDePelis/templates/VendaDePelis/review_form.html"
     #form_class = ReviewForm
@@ -51,7 +51,7 @@ class FavouriteListView(DetailView):
     model = FavouriteList
     template_name = "VendaDePelis/favourite_list_detail.html"
 
-class FavouriteListCreate(CreateView):
+class FavouriteListCreate(LoginRequiredMixin,CreateView):
     model = FavouriteList
     template_name = "VendaDePelis/form.html"
     form_class = FavouriteListForm
@@ -146,7 +146,6 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         # Instance must have an attribute named `owner`.
         return obj.user == request.user
 class APIFilmList(generics.ListCreateAPIView):
-    permission_classes = (IsOwnerOrReadOnly,)
     model = Film
     queryset = Film.objects.all()
     serializer_class = FilmSerializer
@@ -155,7 +154,11 @@ class APIFilmDetail(generics.ListCreateAPIView):
     model= Film
     queryset = Film.objects.all()
     serializer_class=FilmSerializer
-class APIFilmReviewDetail(generics.ListCreateAPIView):
+class APIFilmReviewList(generics.ListCreateAPIView):
+    model = Review
+    queryset = Review.objects.all()
+    serializer_class = FilmReviewSerializer
+class APIFilmReviewDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
     model = Review
     queryset = Review.objects.all()
@@ -175,7 +178,7 @@ class APIFavouriteListList(generics.ListCreateAPIView):
     model=FavouriteList
     queryset = FavouriteList.objects.all()
     serializer_class = FavouriteListSerializer
-class APIFavouriteListDetail(generics.ListCreateAPIView):
+class APIFavouriteListDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
     model=FavouriteList
     queryset = FavouriteList.objects.all()
