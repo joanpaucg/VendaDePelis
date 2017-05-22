@@ -68,4 +68,5 @@ urlpatterns+=[
     url(r'^api/favouritelists/$', APIFavouriteListList.as_view(), name='favouritelist-list'),
     url(r'^api/favouritelists/(?P<pk>\d+)/$', APIFavouriteListDetail.as_view(), name='favouritelist-detail'),
 ]
+#Format Suffixes
 urlpatterns = format_suffix_patterns(urlpatterns, allowed=['api', 'json', 'xml'])
