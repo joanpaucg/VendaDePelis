@@ -8,6 +8,12 @@ from django.core.urlresolvers import reverse
 
 
 
+class UserProfile(models.Model):
+    user=models.OneToOneField(User)
+    city=models.TextField(blank=True,null=True,max_length=30)
+    country=models.TextField(blank=True,null=True,max_length=30)
+    zipCode=models.TextField(blank=True,null=True,max_length=30)
+    stateOrProvince=models.TextField(blank=True,null=True,max_length=30)
 
 class Film(models.Model):
     TYPES= (('Comedy', 'Comedy'), ('Action', 'Action'), ('Drama', 'Drama'), ('Terror', 'Terror'),
