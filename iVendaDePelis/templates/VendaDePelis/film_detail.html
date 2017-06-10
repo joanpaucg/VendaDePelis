@@ -1,14 +1,14 @@
 {% extends "VendaDePelis/base.html" %}
-
+{% block title %} MyFilms -  {{ film.title }} {% endblock %}
 {% block content %}
-
+<span vocab="http://schema.org/" typeof="Movie">
 <h1>
-    {{ film.title }}
+    <span property="name">{{  film.title  }}</span>
 </h1>
 <p><b>Price:</b>  {{ film.price }} Euros</p>
 <p><b>Year:</b>  {{ film.year }}</p>
 <p><b>Duration:</b>  {{ film.duration }}</p>
-<p><b>Genre:</b>  {{ film.genre }}</p>
+<p><span property="genre"><b>Genre:</b>  {{ film.genre }}</span></p>
 <p><b>Description:</b> {{ film.plot}}</p>
 <h2>Actors </h2>
 <ul>
@@ -22,26 +22,35 @@
 {% if film.reviews.all %}
 <span rel="aggregateRating">
     <p typeof="AggregateRating">
-        Average rating <span property="ratingValue">{{ film.averageRating|stringformat:".1f" }}</span>
+        Average rating
+        <span property="ratingValue">{{ film.averageRating|stringformat:".1f" }}</span>
         {% with film.reviews.all|length as reviewCount %}
         from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
         {% endwith %}
     </p>
 </span>
 {% endif %}
-<ul>
+<ul rel="review">
     {% for review in film.reviews.all %}
+        <li typeof="Review">
+            <p rel="reviewRating" typeof="Rating">
+                <span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
+                <span property="ratingValue">{{ review.rating }}</span> star{{ review.rating|pluralize }}
+                {% with RATING_CHOICES|last as best %}
+                <span property="bestRating" content="{{ best.0 }}"></span>
+                {% endwith %}
+            </p>
+            <p property="description">{% if review.opinion %}{{ review.opinion }}{% endif %}</p>
+            <p>Created by <span property="author">{{ review.user }}</span>
+        </li>
+
     {% if user == review.user %}
              <a href="{% url 'ivendadepelis:review_edit'  film.id review.id %}">Edit</a>
     {% endif %}
     {% if user == review.user %}
     <a href="{% url 'ivendadepelis:review_delete'  film.id review.id %}">Delete</a></p>
     {% endif %}
-        <li>
-            <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
-            <p>{% if review.opinion %}{{ review.opinion }}{% endif %}</p>
-            <p>Created by {{ review.user }} </p>
-        </li>
+
     {% endfor %}
 </ul>
 <h3>Add Review</h3>
