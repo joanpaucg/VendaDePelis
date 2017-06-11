@@ -6,15 +6,19 @@
     <span property="name">{{  film.title  }}</span>
 </h1>
 <p><b>Price:</b>  {{ film.price }} Euros</p>
-<p><b>Year:</b>  {{ film.year }}</p>
+    <p><span property="dateCreated"><b>Year:</b>{{ film.year }}</span></p>
 <p><b>Duration:</b>  {{ film.duration }}</p>
 <p><span property="genre"><b>Genre:</b>  {{ film.genre }}</span></p>
 <p><b>Description:</b> {{ film.plot}}</p>
 <h2>Actors </h2>
-<ul>
+<ul rel="actor">
     {% for actor in film.actors.all %}
-    <li><a href="{% url 'ivendadepelis:actor_detail' actor.id %}">
-            {{ actor.name }}</a></li>
+    <li typeof="Person">
+        <span property="name">{{ actor.name }}</span>
+        <span property="url"><a href="{% url 'ivendadepelis:actor_detail' actor.id %}">
+            More</a></span>
+    </li>
+
   {% endfor %}
 </ul>
 

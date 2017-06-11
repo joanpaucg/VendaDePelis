@@ -1,18 +1,21 @@
 {% extends "VendaDePelis/base.html" %}
-
+{% block title %} MyActors - {{ actor.name }} {% endblock %}
 {% block content %}
-
+<span vocab="http://schema.org/" typeof="Person">
 <h1>
-    {{ actor.name }}
+    <span property="name">{{ actor.name }}</span>
 </h1>
-<p>Birthday:{{ actor.birthday }}</p>
-<p>Country:{{ actor.country }}</p>
-<p>Biography:{{actor.biography }}</p>
-<p>Genre:{{ film.genre }}</p>
+<p><span property="birthDate">Birthday:{{ actor.birthday }}</span></p>
+<p><span property="nationality">Country:{{ actor.country }}</span></p>
+<p><span property="description">Biography:{{actor.biography }}</span></p>
+<p><span property="gender">Genre:{{ film.genre }}</span></p>
 <p>Films where he/she has acted</p>
 <ul>{% for film in actor.films.all %}
-  <li><a href="{% url 'ivendadepelis:film_detail' film.id %}">
-            {{ film.title }}</a></li>
+  <li typeof="Movie">
+      <span property="name">{{film.title}}</span>
+      <span property="url"><a href="{% url 'ivendadepelis:film_detail' film.id %}">
+            More</a></span>
+  </li>
   {% endfor %}
 </ul>
 
